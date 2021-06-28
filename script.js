@@ -2,7 +2,7 @@ document.querySelector(".button-container")
 .addEventListener("click",()=>{
     let text = document.getElementById("filter-jobs").value
     getJobs().then(jobs => {
-        let filteredJobs = filterJobs(jobs,text);
+        let filteredJobs = filterJobs(jobs,text.toLowerCase());
         showJobs(filteredJobs)
     })
 })
