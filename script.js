@@ -1,7 +1,10 @@
 document.querySelector(".button-container")
 .addEventListener("click",()=>{
     let text = document.getElementById("filter-jobs").value
-    console.log(text)
+    getJobs().then(jobs => {
+        let filteredJobs = filterJobs(jobs,text);
+        showJobs(filteredJobs)
+    })
 })
 
 
@@ -24,13 +27,15 @@ function filterJobs(jobs,searchText){
                     return false
                 }
             })
-        return filterJobs;
+        return filteredJobs;
+    } else{
+        return jobs;
     }
-    return jobs;
+    
 
 }
 function showJobs(jobs){
-    console.log("jobs in showJobs",jobs)
+    
     let jobsContainer = document.querySelector(".jobs-container")
     let jobsHTML = "";
     jobs.forEach(job => {
